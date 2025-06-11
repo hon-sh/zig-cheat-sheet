@@ -1,4 +1,4 @@
-#import "_lib/cram-snap.typ": cram-snap, theader
+#import "_lib/cram-snap.typ": table_fill, table_stroke, theader
 
 #set page(
   paper: "a4",
@@ -20,15 +20,25 @@
     )
   ],
 )
+
 #set text(font: "Arial", size: 11pt)
+#let fill-color = "F6F6F6"
+#let stroke-color = "21222C"
+#set table(
+  align: left + horizon,
+  columns: (2fr, 3fr),
+  inset: (x: 1.5mm, y: 1mm),
+  fill: table_fill(rgb(fill-color)),
+  stroke: table_stroke(rgb(stroke-color)),
+)
+#set table.header(repeat: false)
+#show table.cell.where(y: 0): set text(weight: "bold", size: 1.2em)
 
 #show raw.where(block: false): it => {
-  box(fill: rgb("#fcdba545"), inset: 0.5mm, radius: 0.2mm, outset: (y: 0mm), it)
+  box(fill: rgb("#a9fca530"), inset: 0.5mm, radius: 0.2mm, outset: (y: 0mm), it)
 }
 
 #show link: underline
-
-#show: cram-snap
 
 #columns(2)[
   #table(
@@ -226,6 +236,11 @@ const Empty = struct {
   [*extern struct*], [An extern struct has in-memory layout matching the C ABI for the target.\ TBD],
   [*packed struct*], [TBD],
 )
+
+
+
+#pagebreak()
+#include "type.typ";
 
 
 #pagebreak()
