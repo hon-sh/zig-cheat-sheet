@@ -35,7 +35,7 @@ jobs:
         run: |
           # set -e
           curl -svL https://github.com/typst/typst/releases/download/v0.13.1/typst-x86_64-unknown-linux-musl.tar.xz | \
-            tar --strip-components 1 -jxf - typst-x86_64-unknown-linux-musl/typst
+            tar --strip-components 1 -Jxf - typst-x86_64-unknown-linux-musl/typst
           ./typst -V
       - name: Setup Pages
         uses: actions/configure-pages@v5
