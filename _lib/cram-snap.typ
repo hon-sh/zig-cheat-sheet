@@ -5,11 +5,7 @@
     left: none,
     right: none,
     top: none,
-    bottom: if y == 0 {
-      color
-    } else {
-      0pt
-    },
+    bottom: none,
   )
 )
 
@@ -18,18 +14,29 @@
     if calc.odd(y) {
       rgb(color)
     } else {
-      none
+      // none
+      white
     }
   }
 )
 
-#let theader(..cells, colspan: 2) = table.header(
-  ..cells
-    .pos()
-    .map(x => if type(x) == content and x.func() == table.cell {
-      x
-    } else {
-      table.cell(colspan: colspan, x)
-    }),
-  ..cells.named(),
-)
+#let stroke-color = "21222C"
+#let theader(..cells, colspan: 2) = {
+  return table.header(
+    ..cells
+      .pos()
+      .map(x => if type(x) == content and x.func() == table.cell {
+        x.with(bottom: rgb(stroke-color), body: x.body.with(weight: "bold", size: 1.2em))
+      } else {
+        table.cell(
+          colspan: colspan,
+          stroke: (
+            bottom: rgb(stroke-color),
+          ),
+          text(x, weight: "bold", size: 1.2em),
+        )
+      }),
+    ..cells.named(),
+  )
+}
+

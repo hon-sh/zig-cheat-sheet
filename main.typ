@@ -21,18 +21,18 @@
   ],
 )
 
+#show heading.where(level: 1): it => { }
+
 #set text(font: "Arial", size: 11pt)
 #let fill-color = "F6F6F6"
-#let stroke-color = "21222C"
 #set table(
   align: left + horizon,
   columns: (2fr, 3fr),
-  inset: (x: 1.5mm, y: 1mm),
+  inset: (x: 1.5mm, y: 1.3mm),
   fill: table_fill(rgb(fill-color)),
-  stroke: table_stroke(rgb(stroke-color)),
+  stroke: table_stroke(none),
 )
 #set table.header(repeat: false)
-#show table.cell.where(y: 0): set text(weight: "bold", size: 1.2em)
 
 #show raw.where(block: false): it => {
   box(fill: rgb("#a9fca530"), inset: 0.5mm, radius: 0.2mm, outset: (y: 0mm), it)
@@ -237,9 +237,13 @@ const Empty = struct {
   [*packed struct*], [TBD],
 )
 
+#pagebreak()
+= std.fmt
+#include "fmt.typ";
 
 
 #pagebreak()
+= std.builtin.Type
 #include "type.typ";
 
 
