@@ -31,12 +31,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Build
+      - name: Setup typst
         run: |
-          # set -e
           curl -svL https://github.com/typst/typst/releases/download/v0.13.1/typst-x86_64-unknown-linux-musl.tar.xz | \
             tar --strip-components 1 -Jxf - typst-x86_64-unknown-linux-musl/typst
           ./typst -V
+      - name: Build
+        run: |
           PATH=$PWD:$PATH bash build.sh
       - name: Setup Pages
         uses: actions/configure-pages@v5
