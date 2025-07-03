@@ -43,6 +43,9 @@
 #include "basic-type.typ";
 
 #pagebreak()
+#include "pointer.typ";
+
+#pagebreak()
 #include "enum.typ";
 
 #pagebreak()
